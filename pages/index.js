@@ -42,7 +42,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.slots}>
-      {filesSlots.map(ele=>  <input onChange={(e) => {
+      {filesSlots.map((ele,i)=>  <input key={ele.toString()+i} onChange={(e) => {
         addFiles(e.target.files)
         setDisplay(false)
         }} type="file" id="files" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" multiple />)}

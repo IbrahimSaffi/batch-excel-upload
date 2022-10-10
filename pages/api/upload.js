@@ -30,7 +30,7 @@ let upload = multer({ storage: storage });
 apiRoute.post(upload.array('files'), async (req, res) => {
     if (typeof (req.files) === "object") {
         req.files.forEach(ele => {
-          console.log( "file link","http://localhost:8000/" + 'uploads/' + ele.filename.replace(/find/g, "found"))
+          console.log( "file link","http://localhost:3000/" + 'uploads/' + ele.filename.replace(/find/g, "found"))
         }
         )
         return res.status(200).send({ response: "Files uploaded succesfully" })
