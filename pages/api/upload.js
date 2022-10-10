@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
         cb(null, "./public/uploads")
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + "-" + file.originalname)
+        cb(null, Date.now() + "-" + file.originalname.replaceAll(' ', '-'))
     }
 })
 let upload = multer({ storage: storage });
@@ -29,6 +29,10 @@ let upload = multer({ storage: storage });
 
 apiRoute.post(upload.array('files'), async (req, res) => {
     if (typeof (req.files) === "object") {
+        req.files.forEach(ele => {
+          console.log( "file link","http://localhost:8000/" + 'uploads/' + ele.filename.replace(/find/g, "found"))
+        }
+        )
         return res.status(200).send({ response: "Files uploaded succesfully" })
     }
     else {
